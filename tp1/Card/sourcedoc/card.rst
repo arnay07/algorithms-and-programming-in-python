@@ -35,6 +35,22 @@ Comparison operator
 
 .. automethod:: card.Card.compare
 
+.. automethod:: card.Card.__repr__
+
+.. automethod:: card.Card.__str__
+
+.. automethod:: card.Card.__eq__
+
+.. automethod:: card.Card.__lt__
+
+.. automethod:: card.Card.__gt__
+
+.. automethod:: card.Card.__ge__
+
+.. automethod:: card.Card.__le__
+
+		
+
 
 Random card
 -----------

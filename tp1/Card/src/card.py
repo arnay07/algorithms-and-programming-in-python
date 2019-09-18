@@ -55,6 +55,8 @@ class Card(object):
     """
     possible colors for card's construction
     """
+
+    
     
     def __init__(self, value, color):
         """
@@ -71,45 +73,136 @@ class Card(object):
         self.__value = value
         self.__color = color
 
+        
+
 
 
     def __repr__(self):
         """
+        function to represent the card in a more readable form
+
+        >>> c = Card("Ace", "heart")
+        >>> c
+        Card("Ace", "heart")
+
         """
 
         return 'Card("{:s}", "{:s}")'.format(self.__value, self.__color)
+
+    
 
         
 
     def __str__(self):
         """
+        Allow to print a card
+
+        >>> c = Card("Ace", "heart")
+        >>> print(c)
+        Card("Ace", "heart")
+
         """
         
         return 'Card("{}", "{}")'.format(self.__value, self.__color)
 
+
+    
+
     def __eq__(self, card):
         """
+        allow to use the sign "==" on Cards
+
+        >>> c = Card("Ace", "heart")
+        >>> c1 = Card("Ace", "heart")
+        >>> c2 = Card("2", "heart")
+        >>> c == c1
+        True
+        >>> c == c2
+        False
+        
         """
 
         return self.__value == card.__value and self.__color == card.__color
 
+
+    
+
     def __neq__(self, card):
         """
+        allow to use the sign "!=" on cards
+
+        >>> c = Card("Ace", "heart")
+        >>> c1 = Card("King", "diamond")
+        >>> c != c1
+        True
+        
         """
 
         return self.__value != card.__value or self.__color != card.__color
 
+
+    
+
     def __lt__(self, card):
         """
+        allow to use "<=" on cards 
+        
+        >>> c = Card("Ace" , "heart")
+        >>> c1 = Card("2", "heart")
+        >>> c < c1
+        True
+        
         """
 
         return self.compare(card) < 0
 
-    def __leq__(self, card):
+
+    
+
+    def __le__(self, card):
         """
+        allow to use "<=" on cards
+        
+        >>> c = Card("Ace", "heart")
+        >>> c11 = Card("2", "diamond")
+        >>> c <= c11
+        True
         """
 
-        return self.compare(card) <= 0 
+        return self.compare(card) <= 0
+
+    
+
+    def __gt__(self, card):
+        """
+        allow to use ">" on cards
+
+        >>> c = Card("Ace", "heart")
+        >>> c11 = Card("2", "diamond")
+        >>> c11 > c
+        True
+
+        """
+
+        return self.compare(card) > 0
+
+    
+
+    def __ge__(self, card):
+        """
+        allow to use ">=" on cards
+
+        >>> c = Card("Ace", "heart")
+        >>> c11 = Card("2", "diamond")
+        >>> c11 >= c
+        True
+        
+        """
+
+        return self.compare(card) >= 0
+
+
+    
         
         
     
@@ -125,7 +218,15 @@ class Card(object):
         >>> c.get_color() in Card.COLORS
         True
         """
-        pass
+
+        random_value = random.choice(Card.VALUES)
+        random_color = random.choice(Card.COLORS)
+
+        return Card(random_value, random_color)
+
+
+
+        
     
     def get_color(self):
         """
