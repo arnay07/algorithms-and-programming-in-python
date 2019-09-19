@@ -1,5 +1,5 @@
 PROJECT=Card
-AUTHOR=Arnaud Kaderi
+AUTHOR=Arnaud Kaderi, BAH Elhadj ibrahima
 PYTHONPATH=./src
 export PYTHONPATH
 SPHINXBUILD=sphinx-build
@@ -24,5 +24,5 @@ archive: clean
 
 author:
 	sed -i -e 's/^project =.*/project = "Module $(PROJECT)"/g' conf.py
-	sed -i -e 's/^copyright =.*/copyright = "2017, $(AUTHOR), Univ. Lille1"/g' conf.py
+	sed -i -e 's/^copyright =.*/copyright = "2019, $(AUTHOR), Univ. Lille1"/g' conf.py
 	sed -i -e 's/^author =.*/author = "$(AUTHOR)"/g' conf.py

@@ -4,7 +4,7 @@
 """
 :mod:`card` module 
 
-:author: ` Arnaud Kaderi
+:author: ` Arnaud Kaderi, BAH Elhadj ibrahima
          Univ. Lille <http://portail.fil.univ-lille1.fr>`_
 
 :date: 2019, September. Last revision: 2019, september
@@ -84,26 +84,13 @@ class Card(object):
         >>> c = Card("Ace", "heart")
         >>> c
         Card("Ace", "heart")
-
-        """
-
-        return 'Card("{:s}", "{:s}")'.format(self.__value, self.__color)
-
-    
-
-        
-
-    def __str__(self):
-        """
-        Allow to print a card
-
-        >>> c = Card("Ace", "heart")
         >>> print(c)
         Card("Ace", "heart")
 
         """
-        
-        return 'Card("{}", "{}")'.format(self.__value, self.__color)
+
+        return 'Card("{:s}", "{:s}")'.format(self.get_value(), self.get_color())
+
 
 
     
@@ -122,7 +109,7 @@ class Card(object):
         
         """
 
-        return self.__value == card.__value and self.__color == card.__color
+        return self.compare(card) == 0
 
 
     
@@ -138,7 +125,7 @@ class Card(object):
         
         """
 
-        return self.__value != card.__value or self.__color != card.__color
+        return self.compare(card) != 0 
 
 
     
@@ -263,6 +250,9 @@ class Card(object):
         return self.__value
     
 
+
+
+
     
     def compare_value(self, card):
          """
@@ -288,7 +278,7 @@ class Card(object):
          >>> c3.compare_value(c1) == 0
          True
          """
-         return self.VALUES.index(self.get_value()) - self.VALUES.index(card.get_value())
+         return Card.VALUES.index(self.get_value()) - Card.VALUES.index(card.get_value())
 
 
 
@@ -320,7 +310,7 @@ class Card(object):
         True
         """
 
-        return self.COLORS.index(self.get_color()) - self.COLORS.index(card.get_color())
+        return Card.COLORS.index(self.get_color()) - Card.COLORS.index(card.get_color())
 
 
 

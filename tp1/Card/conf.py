@@ -56,8 +56,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = "Module Card"
-copyright = "2017, Arnaud Kaderi, Univ. Lille1"
-author = "Arnaud Kaderi"
+copyright = "2019, Arnaud Kaderi, BAH Elhadj ibrahima, Univ. Lille1"
+author = "Arnaud Kaderi, BAH Elhadj ibrahima"
 
 
 
