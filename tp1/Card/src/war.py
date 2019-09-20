@@ -12,6 +12,8 @@
 
 """
 
+
+
 import card
 
 
@@ -52,7 +54,7 @@ def game(number_of_cards):
 
     :param numbers_of_cards: the number of cards by player
     :type number_of_cards: int
-    :CU: None
+    :CU: numbers_of_cards must be between 1 and 16
     
     """
 
@@ -99,7 +101,7 @@ def game(number_of_cards):
                 table = []
             else:
                 print("First player wins")
-                hand_player1.extend(table)
+                hand_player1.extend(table[::-1])
                 table = []
 
     
@@ -136,6 +138,10 @@ def usage():
     print("Usage:  python3 war.py [number of cards]") 
     print("optional: [numbers of cards] is a number between 1 and 16")
 
+
+
+    
+
     
 
 if __name__ == '__main__':
@@ -146,7 +152,7 @@ if __name__ == '__main__':
             number_of_cards = int(sys.argv[1])
             assert number_of_cards <= 16 and number_of_cards > 0
             game(number_of_cards)
-
+            
         except ValueError:
             print("You have entered an illegal argument, try again with a number")
             usage()
