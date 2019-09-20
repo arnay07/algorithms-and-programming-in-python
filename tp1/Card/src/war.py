@@ -17,15 +17,13 @@
 import card
 
 
-
-
 def create_hands(number_of_cards):
     """
     Create the two hands for players
     
     :param numbers_of_cards: number of cards by player
     :type number_of_cards: int
-    :CU: None
+    :CU: number_of_cards must be between 1 and 16
     :return: a tuple of the two hands
     
     """
@@ -61,36 +59,29 @@ def game(number_of_cards):
 
     hand_player1, hand_player2 = create_hands(number_of_cards)[0], create_hands(number_of_cards)[1]
 
-
-    
     
     table = []
 
     while (len(hand_player1)>0 and len(hand_player2)>0):
 
         print(20*'-')
-        print("First plays")
 
-
-        print(hand_player1[0])
-
-        table.append(hand_player1[0])
         
+        print("First plays")
+        print(hand_player1[0])
+        table.append(hand_player1[0])
         hand_player1.remove(hand_player1[0])
         
  
         print("Second plays")
-
-
         print(hand_player2[0])
         table.append(hand_player2[0])
-        
         hand_player2.remove(hand_player2[0])
-
 
 
         table_length = len(table)
 
+        
         if (table[table_length-1] == table[table_length-2]):
             print("*******War********")
             continue
@@ -114,21 +105,14 @@ def game(number_of_cards):
         print("\n*******Player 1 wins********")
         
     else:
+        #In case all the cards in the player's hands have the same value at all indexes
+        #The cards stay on the table until no one has cards left. In that case:
         print("*****No one wins******")
-        
-        
-        
-        
-
         
         
         
     
    
-
-        
-    
-
 def usage():
     """
     A function that shows how to launch the game
@@ -136,7 +120,7 @@ def usage():
     
     """
     print("Usage:  python3 war.py [number of cards]") 
-    print("optional: [numbers of cards] is a number between 1 and 16")
+    print("        [numbers of cards] is optional and must be a number between 1 and 16")
 
 
 
