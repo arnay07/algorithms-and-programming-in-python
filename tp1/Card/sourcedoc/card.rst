@@ -37,8 +37,6 @@ Comparison operator
 
 .. automethod:: card.Card.__repr__
 
-.. automethod:: card.Card.__str__
-
 .. automethod:: card.Card.__eq__
 
 .. automethod:: card.Card.__lt__

@@ -132,7 +132,7 @@ class Card(object):
 
     def __lt__(self, card):
         """
-        allow to use "<=" on cards 
+        allow to use "<" on cards 
         
         >>> c = Card("Ace" , "heart")
         >>> c1 = Card("2", "heart")

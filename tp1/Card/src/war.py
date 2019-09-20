@@ -22,9 +22,9 @@ def create_hands(number_of_cards):
     Create the two hands for players
     
     :param numbers_of_cards: number of cards by player
-    :type numbers: int
+    :type number_of_cards: int
     :CU: None
-    :return: a list of the two hands
+    :return: a tuple of the two hands
     
     """
     
@@ -47,10 +47,20 @@ def create_hands(number_of_cards):
 
 def game(number_of_cards):
     """
+    This function allows us to play the game. Each player have a hand of a certain number of cards [number of cards]
+    and the game is over when one of the player has all the cards or none of the players is left with cards
+
+    :param numbers_of_cards: the number of cards by player
+    :type number_of_cards: int
+    :CU: None
+    
     """
 
 
     hand_player1, hand_player2 = create_hands(number_of_cards)[0], create_hands(number_of_cards)[1]
+
+
+    
     
     table = []
 
@@ -58,15 +68,23 @@ def game(number_of_cards):
 
         print(20*'-')
         print("First plays")
+
+
         print(hand_player1[0])
 
         table.append(hand_player1[0])
+        
         hand_player1.remove(hand_player1[0])
-
+        
+ 
         print("Second plays")
+
+
         print(hand_player2[0])
         table.append(hand_player2[0])
+        
         hand_player2.remove(hand_player2[0])
+
 
 
         table_length = len(table)
@@ -78,9 +96,11 @@ def game(number_of_cards):
             if (table[table_length-1] > table[table_length-2]):
                 print("Second player wins")
                 hand_player2.extend(table)
+                table = []
             else:
                 print("First player wins")
                 hand_player1.extend(table)
+                table = []
 
     
 
@@ -108,10 +128,13 @@ def game(number_of_cards):
     
 
 def usage():
+    """
+    A function that shows how to launch the game
 
-    print("usage:  python3 war.py") 
-    print("or python3 war.py  [number of cards]")
-
+    
+    """
+    print("Usage:  python3 war.py [number of cards]") 
+    print("optional: [numbers of cards] is a number between 1 and 16")
 
     
 
@@ -119,10 +142,18 @@ if __name__ == '__main__':
 
     import sys
     if len(sys.argv) == 2:
-        number_of_cards = int(sys.argv[1])
-        assert number_of_cards <= 16, "the number of cards must be inferior or equal to 16"
+        try:
+            number_of_cards = int(sys.argv[1])
+            assert number_of_cards <= 16 and number_of_cards > 0
+            game(number_of_cards)
 
-        game(number_of_cards)
+        except ValueError:
+            print("You have entered an illegal argument, try again with a number")
+            usage()
+
+        except AssertionError:
+            print("the number of cards must be between 1 and 16")
+            usage()
         
     elif len(sys.argv) == 1:
         game(16)
@@ -131,20 +162,6 @@ if __name__ == '__main__':
         usage()
     
     
-#def usage():
-#    print('number: "{:s}"'.format(sys.argv[1]))
-#if __name__ == '__main__':
-#    import sys
-#    if len(sys.argv[1])>2:
-#        usage()
-#    else:
-#        try:
-#            num = int(sys.argv[1])
-#        except valueError:
-#            print("c'est pas un nombre")
-#            usage()
-#            exit(1)
-#        game(num)    
                                  
     
 
