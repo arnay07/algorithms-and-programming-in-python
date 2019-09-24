@@ -47,8 +47,9 @@ def create_hands(number_of_cards):
 
 def game(number_of_cards):
     """
-    This function allows us to play the game. Each player have a hand of a certain number of cards [number of cards]
-    and the game is over when one of the player has all the cards or none of the players is left with cards
+    This function allows us to play the game. Each player have a hand of a certain 
+    number of cards [number of cards] and the game is over when one of the player 
+    has all the cards or none of the players is left with cards
 
     :param numbers_of_cards: the number of cards by player
     :type number_of_cards: int

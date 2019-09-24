@@ -3,7 +3,8 @@
 ================
 
 :doc:`back <index>`
-     
+
+.. automodule:: card
 .. autoclass:: card.Card
 
 Attributes
