@@ -91,10 +91,12 @@ def game(number_of_cards):
                 print("Second player wins")
                 hand_player2.extend(table)
                 table = []
+    
             else:
                 print("First player wins")
                 hand_player1.extend(table[::-1])
                 table = []
+    
 
     
 

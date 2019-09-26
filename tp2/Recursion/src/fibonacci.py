@@ -1,13 +1,13 @@
-from ap2_decorators import trace
+from ap2_decorators import *
 
 
 
 
-dict_fibo = dict()
 
 
-@trace
-def fibo(n):
+@count
+def fibo(n, dict_fibo={}):
+    
     if n==0:
         return 0
     elif n==1:
@@ -16,7 +16,11 @@ def fibo(n):
         if n in dict_fibo.keys():
             return dict_fibo[n]
         else:
-            dict_fibo[n] = fibo(n-1)+fibo(n-2)
-            return dict_fibo[n]
+            dict_fibo[n] = fibo(n-1, dict_fibo) + fibo(n-2, dict_fibo)
+        return dict_fibo[n]
         
-        #ne pas oublier de vider dict_fibo après
+        
+      
+
+
+

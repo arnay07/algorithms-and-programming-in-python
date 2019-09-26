@@ -42,9 +42,7 @@ Here are the Fibonacci numbers for :math:`0\leq n \leq 10` :
 
 A recursive function
 ====================
-.. math::
-f_40
-.. math::
-prend beaucoup de temps à s' exécuter si on ne fait pas appel
+
+fibo(40) prend beaucoup de temps à s'exécuter si on ne fait pas appel
 à la mémoïsation
 
