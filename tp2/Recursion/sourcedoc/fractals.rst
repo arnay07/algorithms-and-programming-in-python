@@ -2,6 +2,10 @@
 Drawing fractals
 =================
 
+Réponses aux questions
+======================
+
+
 
 Von Koch curve
 ==============
