@@ -2,6 +2,8 @@
 Fibonacci numbers
 =================
 
+.. automodule:: fibonacci
+
 What are Fibonacci numbers?
 ===========================
 
@@ -43,6 +45,16 @@ Here are the Fibonacci numbers for :math:`0\leq n \leq 10` :
 A recursive function
 ====================
 
-fibo(40) prend beaucoup de temps à s'exécuter si on ne fait pas appel
-à la mémoïsation
+.. autofunction:: fibo
 
+		  
+fibo(40) prend beaucoup de temps à s'exécuter si on ne fait pas appel
+à la mémoïsation, mais une fois qu'on utilise la mémoïsation il s'exécute
+assez rapidement
+
+.. code-block:: python
+
+	>>> fibo.counter = 0
+	>>> fibo(40)
+	>>> fibo.counter
+	79

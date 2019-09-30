@@ -2,6 +2,8 @@
 Tracing recursion
 =================
 
+.. automodule:: tracing_recursion
+
 Tracing factorial computation
 =============================
 
