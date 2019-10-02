@@ -58,13 +58,13 @@ def courbe_von_koch(l,n):
     if n==0:
         forward(l) 
     else:
-        courbe_von_koch(l//3, n-1)
+        courbe_von_koch(l/3, n-1)
         left(60)
-        courbe_von_koch(l//3, n-1)
+        courbe_von_koch(l/3, n-1)
         right(120)
-        courbe_von_koch(l//3, n-1)
+        courbe_von_koch(l/3, n-1)
         left(60)
-        courbe_von_koch(l//3, n-1)
+        courbe_von_koch(l/3, n-1)
 
 
 
@@ -84,11 +84,11 @@ def flocon_von_koch(l,n):
     if n==0:
         forward(l)
     else:
-        courbe_von_koch(l//3, n-1)
+        courbe_von_koch(l/3, n-1)
         right(120)
-        courbe_von_koch(l//3, n-1)
+        courbe_von_koch(l/3, n-1)
         right(120)
-        courbe_von_koch(l//3, n-1)
+        courbe_von_koch(l/3, n-1)
 
 
         
@@ -106,16 +106,16 @@ def courbe_cesaro(l,n):
     assert l>0 and n >= 0,'l must be positive and n must be superior or equal to 0'
     
     if n==0:
-        forward(l+ (l-2*sin(5)*l)//2)
+        forward(l+ (l-2*sin(5)*l)/2)
 
     else:
-        courbe_cesaro(l//3,n-1)
+        courbe_cesaro(l/3,n-1)
         left(85)
-        courbe_cesaro(l//3,n-1)
+        courbe_cesaro(l/3,n-1)
         right(170)
-        courbe_cesaro(l//3, n-1)
+        courbe_cesaro(l/3, n-1)
         left(85)
-        courbe_cesaro(l//3, n-1)
+        courbe_cesaro(l/3, n-1)
 
 
 def carre_cesaro(l,n):
@@ -131,15 +131,15 @@ def carre_cesaro(l,n):
     assert l>0 and n >= 0,'l must be positive and n must be superior or equal to 0'
     
     if n==0:
-        forward(l+ (l-2*sin(5)*l)//2)
+        forward(l+ (l-2*sin(5)*l)/2)
     else:
-        courbe_cesaro(l//3, n-1)
+        courbe_cesaro(l/3, n-1)
         left(90)
-        courbe_cesaro(l//3, n-1)
+        courbe_cesaro(l/3, n-1)
         left(90)
-        courbe_cesaro(l//3, n-1)
+        courbe_cesaro(l/3, n-1)
         left(90)
-        courbe_cesaro(l//3, n-1)
+        courbe_cesaro(l/3, n-1)
 
 
 
@@ -161,16 +161,16 @@ def sierpinski(l,n):
             left(120)
 
     else:
-        sierpinski(l//2,n-1)
-        forward(l//2)
-        sierpinski(l//2,n-1)
-        backward(l//2)
+        sierpinski(l/2,n-1)
+        forward(l/2)
+        sierpinski(l/2,n-1)
+        backward(l/2)
         left(60)
-        forward(l//2)
+        forward(l/2)
         right(60)
-        sierpinski(l//2,n-1)
+        sierpinski(l/2,n-1)
         left(60)
-        backward(l//2)
+        backward(l/2)
         right(60)
         
              
