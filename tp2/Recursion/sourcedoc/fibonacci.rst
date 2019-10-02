@@ -2,6 +2,8 @@
 Fibonacci numbers
 =================
 
+:doc:`back <index>`
+      
 .. automodule:: fibonacci
 
 What are Fibonacci numbers?
