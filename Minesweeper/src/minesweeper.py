@@ -1,12 +1,13 @@
+
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 """
 :mod:`minesweeper` module
 
-:author: HERE YOUR NAME
+:author: Arnaud Kaderi, Elhadj Ibrahima BAH
 
-:date:  
+:date: 07/10/2019
 
 This module provides functions and a class for minesweeper's game's management.
 
@@ -68,6 +69,23 @@ def neighborhood(x, y, width, height):
     >>> neighborhood(3, 9, 10, 10)
     [(2, 8), (2, 9), (3, 8), (4, 8), (4, 9)]
     """
+    neighbors = []
+    dict_neighbors = {  (x1,y1) : (x-1, y-1),
+                        (x2,y2) : (x-1, y),
+                        (x3,y3) :(x-1,y+1),
+                        (x4,y4) :(x,y-1),
+                        (x5,y5) :(x,y+1),
+                        (x6,y6) :(x+1,y-1),
+                        (x7,y7) :(x+1,y),
+                        (x8,y8) :(x+1,y+1)}
+    for neighbor in dict_neighbors:
+        if neighbor[0] >= 0 and neighbor[0] < width and neighbor[1] >= 0 and neighbor[1] < height:
+            neighbors.append(neighbor)
+
+    return neighbors
+            
+   
+    
 
 
 class Minesweeper():
@@ -114,6 +132,27 @@ class Minesweeper():
         >>> game.get_state() == GameState.unfinished 
         True
         """
+
+        assert nbombs <= width*height, "the number of bombs must be inferior to the area of the grid"
+
+        grid = []
+        
+        self.width = width
+        self.height = height
+        self.nbombs = nbombs
+
+        for i in range(width):
+            for j in range(height):
+                grid.append(Cell())
+        for i in range(nbombs):
+            while True:
+                random_cell = random.choice(grid)
+                if not random_cell.is_bomb():
+                    random_cell.set_bomb()
+                    break
+        
+        return grid
+                
         
 
     def get_height(self):
@@ -122,6 +161,7 @@ class Minesweeper():
         :rtype: int
         :UC: none
         """
+        return self.height
 
 
     def get_width(self):
@@ -131,6 +171,8 @@ class Minesweeper():
         :UC: none
             """
 
+        return self.width
+
     
     def get_nbombs(self):
         """
@@ -138,6 +180,8 @@ class Minesweeper():
         :rtype: int
         :UC: none
         """
+
+        return self.nbombs
 
 
 
