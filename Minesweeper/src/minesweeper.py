@@ -246,25 +246,33 @@ class Minesweeper():
         :side effect: reveal all cells of game game from the initial cell (x,y).
         :UC: 0 <= x < width of game and O <= y < height of game
         """
-        if self.cell_in_grid(x,y) and not self.get_cell(x,y).is_bomb() and not self.get_cell(x,y).is_revealed(): 
+        if self.cell_in_grid(x,y) and not self.get_cell(x,y).is_bomb() and not self.get_cell(x,y).is_revealed():
+
+            self.gamestate = GameState.unfinished
             self.get_cell(x,y).reveal()
-            
-            if(self.cell_in_grid(x-1,y) and  self.get_cell(x-1,y).number_of_bombs_in_neighborhood()==0):
+
+
+            #le probleme c'est que la recursivite ne va pas plus loin que la ligne en bas il nous faut un cas de base
+            if(self.cell_in_grid(x-1,y) and not self.get_cell(x-1,y).is_bomb()): 
                 self.reveal_all_cells_from(x-1,y)
-            elif(self.cell_in_grid(x+1,y) and self.get_cell(x+1,y).number_of_bombs_in_neighborhood()==0):
+            elif(self.cell_in_grid(x+1,y) and not self.get_cell(x+1,y).is_bomb()): 
                 self.reveal_all_cells_from(x+1,y)
-            elif(self.cell_in_grid(x,y+1) and self.get_cell(x,y+1).number_of_bombs_in_neighborhood()==0):
+            elif(self.cell_in_grid(x,y+1) and not self.get_cell(x,y+1).is_bomb()): 
                 self.reveal_all_cells_from(x,y+1)
-            elif(self.cell_in_grid(x,y-1) and self.get_cell(x,y-1).number_of_bombs_in_neighborhood()==0):
+            elif(self.cell_in_grid(x,y-1) and not self.get_cell(x,y-1).is_bomb()): 
                 self.reveal_all_cells_from(x,y-1)
 
 
-
+            
         elif self.cell_in_grid(x,y) and self.get_cell(x,y).is_bomb():
             for case in self.grid.values():
                 if case.is_bomb():
                     case.reveal()
-            self.game = GameState.losing
+            self.gamestate = GameState.losing
+
+
+       # else:
+       #     self.gamestate = GameState.winning
                 
 
        
