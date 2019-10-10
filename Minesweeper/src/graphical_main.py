@@ -4,9 +4,9 @@
 """
 :mod:`main` module
 
-:author: `FIL - IEEA - Univ. Lille1.fr <http://portail.fil.univ-lille1.fr>`_
+:author: Arnaud Kaderi, Elhadj Ibrahima BAH `FIL - IEEA - Univ. Lille1.fr <http://portail.fil.univ-lille1.fr>`_
 
-:date:  2015, september. Last revision: 2017, september
+:date:  2019, september. Last revision: 2019, september
 
 Main module to play the minesweeper's game : graphical version
 

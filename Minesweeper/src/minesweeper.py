@@ -70,17 +70,11 @@ def neighborhood(x, y, width, height):
     [(2, 8), (2, 9), (3, 8), (4, 8), (4, 9)]
     """
     neighbors = []
-    dict_neighbors = {  (x1,y1) : (x-1, y-1),
-                        (x2,y2) : (x-1, y),
-                        (x3,y3) :(x-1,y+1),
-                        (x4,y4) :(x,y-1),
-                        (x5,y5) :(x,y+1),
-                        (x6,y6) :(x+1,y-1),
-                        (x7,y7) :(x+1,y),
-                        (x8,y8) :(x+1,y+1)}
-    for neighbor in dict_neighbors:
-        if neighbor[0] >= 0 and neighbor[0] < width and neighbor[1] >= 0 and neighbor[1] < height:
-            neighbors.append(neighbor)
+
+    for i in range(x-1, x+2):
+        for j in range(y-1, y+2):
+            if i != width and j != height and i>=0 and j>=0 and (i,j) != (x,y):
+                neighbors.append((i,j))
 
     return neighbors
             
@@ -125,7 +119,7 @@ class Minesweeper():
         >>> game = Minesweeper(20, 10, 4)
         >>> game.get_width()
         20
-        >>> game.get_height()
+
         10
         >>> game.get_nbombs()
         4
@@ -135,23 +129,30 @@ class Minesweeper():
 
         assert nbombs <= width*height, "the number of bombs must be inferior to the area of the grid"
 
-        grid = []
+        self.grid = {(i,j): Cell() for i in range(width) for j in range(height)}
         
         self.width = width
         self.height = height
         self.nbombs = nbombs
+        self.gamestate = GameState.unfinished
 
-        for i in range(width):
-            for j in range(height):
-                grid.append(Cell())
-        for i in range(nbombs):
-            while True:
-                random_cell = random.choice(grid)
-                if not random_cell.is_bomb():
-                    random_cell.set_bomb()
-                    break
+            
+        cells_with_bombs = []
+        number_of_bombs = self.nbombs
+
         
-        return grid
+        while number_of_bombs != 0:
+            bomb = (random.randint(0,width-1), random.randint(0,height-1))
+            if bomb not in cells_with_bombs:
+                self.grid[bomb].set_bomb()
+                cells_in_neighborhood = neighborhood(bomb[0],bomb[1],self.width, self.height)
+                for cells in cells_in_neighborhood:
+                    self.grid[cells].incr_number_of_bombs_in_neighborhood()
+                cells_with_bombs.append(bomb)
+                number_of_bombs -=  1
+        
+        
+        
                 
         
 
@@ -195,7 +196,11 @@ class Minesweeper():
         :type: cell
         :UC: 0 <= x < width of game and O <= y < height of game
         """
+        assert x>= 0 and x<self.width and y>=0 and y<self.height, "cell must be in the grid"
+        
+        return self.grid[(x,y)]
 
+    
 
 
     def get_state(self):
@@ -204,6 +209,34 @@ class Minesweeper():
         :rtype: GameState
         :UC: none
         """
+        
+        
+        return self.gamestate
+
+
+    
+
+    def cell_in_grid(self,x,y):
+        """
+        Check if the cell is in the  grid
+        
+        :param x: x-coordinate of a cell
+        :type x: int
+        :param y: y-coordinate of a cell
+        :type y: int
+        :return: True if the cell is in the grid and False otherwise
+        :rtype: boolean
+        :UC: none
+        """
+
+        try:
+            self.get_cell(x,y)
+            return True
+        except AssertionError:
+            return False
+        
+
+        
 
     def reveal_all_cells_from(self, x, y):
         """
@@ -213,6 +246,47 @@ class Minesweeper():
         :side effect: reveal all cells of game game from the initial cell (x,y).
         :UC: 0 <= x < width of game and O <= y < height of game
         """
+        if self.cell_in_grid(x,y) and not self.get_cell(x,y).is_bomb() and not self.get_cell(x,y).is_revealed(): 
+            self.get_cell(x,y).reveal()
+            
+            if(self.cell_in_grid(x-1,y) and  self.get_cell(x-1,y).number_of_bombs_in_neighborhood()==0):
+                self.reveal_all_cells_from(x-1,y)
+            elif(self.cell_in_grid(x+1,y) and self.get_cell(x+1,y).number_of_bombs_in_neighborhood()==0):
+                self.reveal_all_cells_from(x+1,y)
+            elif(self.cell_in_grid(x,y+1) and self.get_cell(x,y+1).number_of_bombs_in_neighborhood()==0):
+                self.reveal_all_cells_from(x,y+1)
+            elif(self.cell_in_grid(x,y-1) and self.get_cell(x,y-1).number_of_bombs_in_neighborhood()==0):
+                self.reveal_all_cells_from(x,y-1)
+
+
+
+        elif self.cell_in_grid(x,y) and self.get_cell(x,y).is_bomb():
+            for case in self.grid.values():
+                if case.is_bomb():
+                    case.reveal()
+            self.game = GameState.losing
+                
+
+       
+
+
+            
+    def incr_number_bombs_in (self):
+        """
+        """
+        #TODO
+        pass
+
+
+    
+        
+
+        
+
+        
+
+
+        
 
 if __name__ == '__main__':
     import doctest
