@@ -99,6 +99,8 @@ class Minesweeper():
     >>> 
     """
 
+    number_of_cells_revealed = 0
+
     def __init__(self, width=30, height=20, nbombs=99):
         """
         build a minesweeper grid of size width*height cells
@@ -127,21 +129,21 @@ class Minesweeper():
         True
         """
 
-        assert nbombs <= width*height, "the number of bombs must be inferior to the area of the grid"
+        assert 0 <= nbombs <= width*height, "the number of bombs must be inferior to the area of the grid and superior or equal to 0"
 
-        self.grid = {(i,j): Cell() for i in range(width) for j in range(height)}
+        
         
         self.width = width
         self.height = height
         self.nbombs = nbombs
         self.gamestate = GameState.unfinished
-
+        self.grid = {(i,j): Cell() for i in range(self.width) for j in range(self.height)}
             
         cells_with_bombs = []
         number_of_bombs = self.nbombs
 
         
-        while number_of_bombs != 0:
+        while number_of_bombs > 0:
             bomb = (random.randint(0,width-1), random.randint(0,height-1))
             if bomb not in cells_with_bombs:
                 self.grid[bomb].set_bomb()
@@ -196,7 +198,7 @@ class Minesweeper():
         :type: cell
         :UC: 0 <= x < width of game and O <= y < height of game
         """
-        assert x>= 0 and x<self.width and y>=0 and y<self.height, "cell must be in the grid"
+        assert 0 <= x < self.width and 0 <= y < self.height, "cell must be in the grid"
         
         return self.grid[(x,y)]
 
@@ -236,7 +238,7 @@ class Minesweeper():
             return False
         
 
-        
+
 
     def reveal_all_cells_from(self, x, y):
         """
@@ -246,56 +248,36 @@ class Minesweeper():
         :side effect: reveal all cells of game game from the initial cell (x,y).
         :UC: 0 <= x < width of game and O <= y < height of game
         """
-        if self.cell_in_grid(x,y) and not self.get_cell(x,y).is_bomb() and not self.get_cell(x,y).is_revealed():
 
-            self.gamestate = GameState.unfinished
-            self.get_cell(x,y).reveal()
-
-
-            #le probleme c'est que la recursivite ne va pas plus loin que la ligne en bas il nous faut un cas de base
-            if(self.cell_in_grid(x-1,y) and not self.get_cell(x-1,y).is_bomb()): 
-                self.reveal_all_cells_from(x-1,y)
-            elif(self.cell_in_grid(x+1,y) and not self.get_cell(x+1,y).is_bomb()): 
-                self.reveal_all_cells_from(x+1,y)
-            elif(self.cell_in_grid(x,y+1) and not self.get_cell(x,y+1).is_bomb()): 
-                self.reveal_all_cells_from(x,y+1)
-            elif(self.cell_in_grid(x,y-1) and not self.get_cell(x,y-1).is_bomb()): 
-                self.reveal_all_cells_from(x,y-1)
-
-
+        if self.cell_in_grid(x,y) and not self.get_cell(x,y).is_revealed():
             
-        elif self.cell_in_grid(x,y) and self.get_cell(x,y).is_bomb():
-            for case in self.grid.values():
-                if case.is_bomb():
-                    case.reveal()
-            self.gamestate = GameState.losing
+            self.get_cell(x,y).reveal()
+            self.number_of_cells_revealed += 1
 
-
-       # else:
-       #     self.gamestate = GameState.winning
+            if self.get_cell(x,y).is_bomb():
+                for case in self.grid.values():
+                    if case.is_bomb():
+                        case.reveal()
+                self.gamestate = GameState.losing
+            
+            
+            elif self.get_cell(x,y).number_of_bombs_in_neighborhood()==0:
+                for cellule in neighborhood(x,y,self.get_width(), self.get_height()):
+                    self.reveal_all_cells_from(cellule[0], cellule[1])
+            
+                  
                 
-
+            
+        if self.number_of_cells_revealed == (self.get_width()*self.get_height()) - self.get_nbombs():
+            self.gamestate = GameState.winning
        
 
 
+
+
+
+
             
-    def incr_number_bombs_in (self):
-        """
-        """
-        #TODO
-        pass
-
-
-    
-        
-
-        
-
-        
-
-
-        
-
 if __name__ == '__main__':
     import doctest
     doctest.testmod(optionflags=doctest.NORMALIZE_WHITESPACE | doctest.ELLIPSIS, verbose=True)

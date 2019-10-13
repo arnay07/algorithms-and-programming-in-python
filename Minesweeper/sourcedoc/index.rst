@@ -9,5 +9,6 @@
    cell
    minesweeper
    graphicalboard
-
+   console_main
+   graphical_main
 

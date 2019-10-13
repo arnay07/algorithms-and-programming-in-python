@@ -56,8 +56,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = "Minesweeper"
-copyright = "2019, Arnaud Kaderi, Univ. Lille"
-author = "Arnaud Kaderi"
+copyright = "2019, Arnaud Kaderi, Elhadj Ibrahima BAH, Univ. Lille"
+author = "Arnaud Kaderi, Elhadj Ibrahima BAH"
 
 
 
