@@ -233,10 +233,11 @@ class Cell():
         >>> cel.set_bomb()
         >>> str(cel) == 'B'
         True
-        """
-        if self.is_hypothetic() and not self.is_revealed():
-            return '{:s}'.format('?')
+        """   
+            
         if not self.is_revealed():
+            if self.is_hypothetic():
+                return '{:s}'.format('?')
             return '{:s}'.format(' ')
         elif self.is_bomb():
             return '{:s}'.format('B')

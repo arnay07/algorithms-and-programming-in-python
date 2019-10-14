@@ -2,6 +2,10 @@
 :mod:`minesweeper` module
 =========================
 
+:doc:`back <index>`
+
+.. automodule:: minesweeper
+
 Ce module définit des classes et fonctions auxiliaires pour gérer le plateau du jeu de démineur.
 
 

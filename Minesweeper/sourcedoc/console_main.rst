@@ -2,6 +2,8 @@
 :mod:`console_main` module
 ==========================
 
+:doc:`back <index>`
+
 .. automodule:: console_main
 
 fonction principale

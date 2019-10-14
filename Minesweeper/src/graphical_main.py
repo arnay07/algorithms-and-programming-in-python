@@ -20,6 +20,9 @@ import graphicalboard
 def main():
     """
     main function for graphical minesweeper game
+
+    :return: none
+    :UC: None
     """
     if len(sys.argv) == 4:
         width = int(sys.argv[1])

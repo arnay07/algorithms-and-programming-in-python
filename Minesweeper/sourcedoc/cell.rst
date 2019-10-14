@@ -2,6 +2,10 @@
 :mod:`cell` module
 ==================
 
+:doc:`back <index>`
+
+.. automodule:: cell
+
 
 Ce module définit une classe pour représenter les cellules (ou cases) d'un plateau de
 jeu de démineur.

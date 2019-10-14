@@ -18,6 +18,9 @@ import sys
 def main():
     """
     main function for console minesweeper game
+
+    :return: none
+    :UC: None
     """
     if len(sys.argv) == 4:
         width = int(sys.argv[1])
@@ -65,7 +68,11 @@ def trace_line(width):
     
     :param width: the width of the grid
     :type width: int
+    :side effect: trace the line in the grid
+    :return: none
+    :UC: None
     """
+    
     print(' ', end='')
     for i in range(width):
         print('+---', end='')
@@ -79,7 +86,11 @@ def trace_grid(game):
     
     :param game: a Minesweeper game
     :type game: Minesweeper
+    :side effect: trace the grid
+    :return: none
+    :UC: none
     """
+    
     print(' ',end='')
     for i in range(game.get_width()):
         print("{:4d}".format(i), end='')

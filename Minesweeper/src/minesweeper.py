@@ -7,7 +7,7 @@
 
 :author: Arnaud Kaderi, Elhadj Ibrahima BAH
 
-:date: 07/10/2019
+:date: 14/10/2019
 
 This module provides functions and a class for minesweeper's game's management.
 

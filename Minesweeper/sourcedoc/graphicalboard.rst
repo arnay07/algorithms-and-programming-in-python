@@ -2,6 +2,8 @@
 :mod:`graphicalboard` module
 ============================
 
+:doc:`back <index>`
+
 Ce module fournit essentiellement une fonction de création d'une fenêtre graphique pour
 jouer au démineur. Il nécessite les modules :mod:`cell` et :mod:`minesweeper`.
 
