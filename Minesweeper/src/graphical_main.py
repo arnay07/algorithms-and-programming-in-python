@@ -31,7 +31,7 @@ def main():
     else:
         width = 8
         height = 8
-        nbombs = 10
+        nbombs = 5
     game = Minesweeper(width, height, nbombs)
     graphicalboard.create(game)
 

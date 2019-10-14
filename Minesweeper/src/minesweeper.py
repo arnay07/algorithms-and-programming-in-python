@@ -69,6 +69,7 @@ def neighborhood(x, y, width, height):
     >>> neighborhood(3, 9, 10, 10)
     [(2, 8), (2, 9), (3, 8), (4, 8), (4, 9)]
     """
+    
     neighbors = []
 
     for i in range(x-1, x+2):
@@ -138,18 +139,24 @@ class Minesweeper():
         self.nbombs = nbombs
         self.gamestate = GameState.unfinished
         self.grid = {(i,j): Cell() for i in range(self.width) for j in range(self.height)}
-            
+
+
+        #list of bombs in the grid
         cells_with_bombs = []
+
+        
         number_of_bombs = self.nbombs
 
         
         while number_of_bombs > 0:
             bomb = (random.randint(0,width-1), random.randint(0,height-1))
+            
             if bomb not in cells_with_bombs:
                 self.grid[bomb].set_bomb()
                 cells_in_neighborhood = neighborhood(bomb[0],bomb[1],self.width, self.height)
                 for cells in cells_in_neighborhood:
                     self.grid[cells].incr_number_of_bombs_in_neighborhood()
+                    
                 cells_with_bombs.append(bomb)
                 number_of_bombs -=  1
         
@@ -196,6 +203,7 @@ class Minesweeper():
         :type y: int
         :return: the cell of coordinates (x,y) in the game's grid
         :type: cell
+        :raises: AssertionError
         :UC: 0 <= x < width of game and O <= y < height of game
         """
         assert 0 <= x < self.width and 0 <= y < self.height, "cell must be in the grid"

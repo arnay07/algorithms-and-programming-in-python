@@ -29,7 +29,10 @@ def main():
     else:
         width = 8
         height = 8
-        nbombs = 10
+        nbombs = 5
+
+
+        
     game = Minesweeper(width, height, nbombs)
 
     trace_grid(game)
@@ -73,7 +76,7 @@ def trace_line(width):
     :UC: None
     """
     
-    print(' ', end='')
+    print('  ', end='')
     for i in range(width):
         print('+---', end='')
     print('+')
@@ -91,14 +94,14 @@ def trace_grid(game):
     :UC: none
     """
     
-    print(' ',end='')
+    print('  ',end='')
     for i in range(game.get_width()):
         print("{:4d}".format(i), end='')
     print('')    
     trace_line(game.get_width())
 
     for i in range(game.get_height()):
-        print('{}|'.format(i), end='')
+        print('{:2d}|'.format(i), end='')
         for j in range(game.get_width()):
             print(' {} |'.format(game.get_cell(j,i)) ,end='')
         print('')
