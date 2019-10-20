@@ -5,12 +5,8 @@
 :doc:`back <index>`
 
 .. automodule:: graphical_main
-
-function main
--------------
-
-.. autofunction:: main
-
+   :members:
+      
 
 Le jeu
 ======

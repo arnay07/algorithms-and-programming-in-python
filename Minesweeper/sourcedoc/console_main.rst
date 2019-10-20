@@ -5,21 +5,7 @@
 :doc:`back <index>`
 
 .. automodule:: console_main
-
-fonction principale
--------------------
-
-.. autofunction:: main
-
-
-fonctions auxiliaires
----------------------
-
-.. autofunction:: trace_line
-
-.. autofunction:: trace_grid	  
-		 
-
+   :members:
 
 
 Le jeu
