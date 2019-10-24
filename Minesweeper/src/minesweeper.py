@@ -104,6 +104,7 @@ class Minesweeper():
 
     def __init__(self, width=30, height=20, nbombs=99):
         """
+
         build a minesweeper grid of size width*height cells
         with nbombs bombs randomly placed.  
 
@@ -115,8 +116,8 @@ class Minesweeper():
         :type nbombs: int
         :return: a fresh grid of  width*height cells with nbombs bombs randomly placed.
         :rtype: Minesweeper
-        :UC: width and height must be positive integers, and
-             nbombs <= width * height
+        :UC: width and height must be positive integers, and nbombs <= width * height
+
         :Example:
 
         >>> game = Minesweeper(20, 10, 4)
@@ -128,6 +129,7 @@ class Minesweeper():
         4
         >>> game.get_state() == GameState.unfinished 
         True
+
         """
 
         assert 0 <= nbombs <= width*height, "the number of bombs must be inferior to the area of the grid and superior or equal to 0"
@@ -278,6 +280,7 @@ class Minesweeper():
             
         if self.number_of_cells_revealed == (self.get_width()*self.get_height()) - self.get_nbombs():
             self.gamestate = GameState.winning
+            
        
 
 

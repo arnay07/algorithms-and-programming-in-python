@@ -5,8 +5,7 @@
 :doc:`back <index>`
 
 .. automodule:: cell
-
-
+		
 Ce module définit une classe pour représenter les cellules (ou cases) d'un plateau de
 jeu de démineur.
 
@@ -18,40 +17,19 @@ Une cellule peut être
 * elle peut avoir été jugée comme contenant hypothétiquement une bombe.
 
 
+.. autoclass:: Cell
+   :members: is_revealed, reveal, is_bomb, set_bomb, is_hypothetic,
+	     set_hypothetic, unset_hypothetic,
+	     number_of_bombs_in_neighborhood,
+	     incr_number_of_bombs_in_neighborhood
 
-Class description
------------------
 
-.. autoclass:: cell.Cell
+méthodes spéciales
+~~~~~~~~~~~~~~~~~~
 
-Methods
--------
+.. automethod:: Cell.__init__
+.. automethod:: Cell.__str__		
+		
 
-.. automethod:: cell.Cell.is_revealed
 
-.. automethod:: cell.Cell.reveal
 
-.. automethod:: cell.Cell.is_bomb
-
-.. automethod:: cell.Cell.set_bomb
-
-.. automethod:: cell.Cell.is_hypothetic
-
-.. automethod:: cell.Cell.set_hypothetic
-								
-.. automethod:: cell.Cell.unset_hypothetic
-
-.. automethod:: cell.Cell.number_of_bombs_in_neighborhood
-								
-.. automethod:: cell.Cell.incr_number_of_bombs_in_neighborhood
-	
-			   
-Special method
---------------
-
-Only two special methods for this class.
-
-.. automethod:: cell.Cell.__init__
-
-.. automethod:: cell.Cell.__str__
-								
