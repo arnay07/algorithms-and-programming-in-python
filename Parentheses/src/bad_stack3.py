@@ -4,7 +4,7 @@
 """
 :mod:`stack1` module
 
-:author: `FIL - Faculté des Sciences et Technologies - 
+:author: `FIL - Faculté des Sciences et Technologies -
           Univ. Lille <http://portail.fil.univ-lille1.fr>`_
 
 :date: 2015, september
@@ -44,7 +44,7 @@ False
 True
 >>> stak.pop()
 Traceback (most recent call last):
-   ... 
+   ...
 StackEmptyError: empty stack, nothing to pop
 """
 
@@ -99,7 +99,7 @@ class Stack():
 
     def is_empty(self):
         """
-        :return: 
+        :return:
            * ``True`` if s is empty
            * ``False`` otherwise
         :rtype: bool

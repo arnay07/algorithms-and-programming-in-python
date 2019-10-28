@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-:mod:`parentheses_checker2` module
+:mod:`parentheses_checker3` module
 
 :author:Arnaud Kaderi, Elhadj Ibrahima BAH
 
@@ -39,14 +39,28 @@ def parentheses_checker():
 
     bad_parentheses = False
 
+    docstring = ""
+
     line_number = 1
+
+    commentary = False
+    docstring_comment = False
 
     res = ''
 
     while(line_read != '' and not bad_parentheses):
         i = 0
         while(i <len(line_read) and not bad_parentheses):
-            if line_read[i] in {'(',')','[',']','{','}'}:
+            if line_read[i] in {'"',"'"}:
+                docstring += line_read[i]
+                if (docstring == "'''" or docstring == '"""'):
+                    if line_read[i-1]==line_read[i-2]==line_read[i]:
+                        docstring_comment = not docstring_comment
+                    docstring = ''
+            elif line_read[i] == "#":
+                commentary = True
+
+            elif line_read[i] in {'(',')','[',']','{','}'} and not commentary and not docstring_comment:
                 if line_read[i] in PARENTHESES.keys():
                     #Pushing a list of the caracter at index 0,
                     #his place in the line at the index 1
@@ -67,6 +81,7 @@ def parentheses_checker():
             i+=1
         line_read = open_file.readline()
         line_number += 1
+        commentary = False
 
     open_file.close()
     if bad_parentheses:
@@ -74,8 +89,6 @@ def parentheses_checker():
     elif not line_stack.is_empty():
         print(("Parenthese {} at line {} char {}"
                 " has no matching closed parenthese").format(line_stack.top()[0], line_stack.top()[2], line_stack.top()[1]))
-
-
 
 
 
