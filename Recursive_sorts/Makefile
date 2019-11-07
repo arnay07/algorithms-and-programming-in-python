@@ -1,5 +1,5 @@
 PROJECT=Recursive_sorts
-AUTHOR=Raymond Calbuth
+AUTHOR=Arnaud Kaderi, Ibrahima Elhadj Bah
 PYTHONPATH=./src
 export PYTHONPATH
 SPHINXBUILD=python3 -m sphinx

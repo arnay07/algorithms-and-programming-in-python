@@ -4,11 +4,11 @@
 """
 :mod:`parentheses_checker3` module
 
-:author:Arnaud Kaderi, Elhadj Ibrahima BAH
+:author: Arnaud Kaderi, Elhadj Ibrahima BAH
 
 
 :date: 2019, october
-:last revision: 2019, october
+:last revision: 07/11/2019 
 
 """
 
@@ -22,6 +22,12 @@ PARENTHESES = {'(':')','[':']','{':'}'}
 def parentheses_checker():
     """
     Checks if the program in the file is well parenthesed
+    if true nothing happens otherwise print the number line and the caracter that causes the problem.
+    If the caracter does not affect the execution of the program nothing happens
+
+
+    :returns: none
+    :UC: none
 
     """
 

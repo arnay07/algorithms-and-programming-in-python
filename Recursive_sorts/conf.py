@@ -55,9 +55,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-author = "Raymond Calbuth"
-project = "Recursive sorts"
-copyright = "2019, Raymond Calbuth, FIL - FST - Univ. Lille"
+author = "Arnaud Kaderi, Ibrahima Elhadj Bah"
+project = "Recursive_sorts"
+copyright = "2019, Arnaud Kaderi, Ibrahima Elhadj Bah, FIL - FST - Univ. Lille"
 
 
 

@@ -3,8 +3,8 @@
 
 """
 :mod:`recursive sorts`
-:author: `FIL - FST - Univ. Lille.fr <http://portail.fil.univ-lille1.fr>`_
-:date: 2016, september. Last revised: 2018, september
+:author: Arnaud Kaderi, Ibrahima Elhadj Bah,`FIL - FST - Univ. Lille.fr <http://portail.fil.univ-lille1.fr>`_
+:date: 2019, October. Last revised: 2019, October 
 
 Some recursive sorting algorithms:
 

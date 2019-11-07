@@ -55,9 +55,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = ""
-copyright = ""
-author = ""
+project = "Parentheses"
+copyright = "2019, Arnaud Kaderi, Elhadj Ibrahima Bah, Univ. Lille"
+author = "Arnaud Kaderi, Elhadj Ibrahima Bah"
 
 
 

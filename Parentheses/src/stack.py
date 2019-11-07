@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-:mod:`stack1` module
+:mod:`stack` module
 
 :author: `FIL - Faculté des Sciences et Technologies - 
           Univ. Lille <http://portail.fil.univ-lille1.fr>`_
